@@ -7,7 +7,7 @@ from tests.adapters import run_train_bpe
 from tests.common import FIXTURES_PATH, gpt2_bytes_to_unicode
 
 # ===== 你可以调这个参数 =====
-DEBUG_VOCAB_SIZE = 10000
+DEBUG_VOCAB_SIZE = 500
 PRINT_TOP_N = 20
 # ===========================
 

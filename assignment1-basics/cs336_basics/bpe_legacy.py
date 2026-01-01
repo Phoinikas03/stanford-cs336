@@ -1,6 +1,6 @@
 import heapq
 import cProfile
-from .pretokenization_example import pretokenization_parallel, pretokenization_serial
+from .pretokenization_txt import pretokenization_parallel, pretokenization_serial
 from typing import List, Dict, Tuple, Set, Optional
 from collections import defaultdict
 
@@ -242,6 +242,6 @@ def train_bpe(input_path: str ,
     return vocab, merges
 
 if __name__ == "__main__":
-    vocab, merges = train_bpe("../dataset/TinyStoriesV2-GPT4-valid.txt", 10000, ["<|endoftext|>"])
+    vocab, merges = train_bpe("../dataset/tinystories/TinyStoriesV2-GPT4-valid.txt", 10000, ["<|endoftext|>"])
     # cProfile.run('train_bpe()')
     pass

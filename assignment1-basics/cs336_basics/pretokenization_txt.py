@@ -61,7 +61,7 @@ def _process_chunk(args):
         f.seek(start)
         chunk = f.read(end - start).decode("utf-8", errors="ignore")
 
-    # 按特殊 token 分割
+    # 按特殊 token 分割，得到每个文本的列表:[text1, text2]，不含<|endoftext|>
     parts = re.split(pattern, chunk)
     # 你可以选择去掉空字符串
     # parts = [p for p in parts if p]   # 可选
@@ -109,14 +109,18 @@ def pretokenization_serial(path: str, num_chunks: int):
     return total_counts
     
 
-def pretokenization_parallel(path: str, num_processes: int):
+def pretokenization_parallel(path: str, num_processes: int, special_tokens, chunk_num=None):
+    if chunk_num is None:
+        chunk_num = 8 * num_processes
+    print(f"split corpus into {chunk_num} chunks")
     # BPE “不跨词合并”，这是由 pretokenization 的 split 保证的
     # BPE 不会生成跨词（如 "I like"）的 token
-    
+    print("pretokenization start")
     with open(path, "rb") as f:
-        boundaries = find_chunk_boundaries(f, num_processes, b"<|endoftext|>")
+        boundaries = find_chunk_boundaries(f, chunk_num, b"<|endoftext|>")
 
-    special_tokens = ["<|endoftext|>"]
+    # print(boundaries)
+    # special_tokens = ["<|endoftext|>"]
     pattern = "|".join(re.escape(tok) for tok in special_tokens)
 
     # 给每个进程准备 (path, start, end, pattern) 参数
@@ -125,21 +129,25 @@ def pretokenization_parallel(path: str, num_processes: int):
         for start, end in zip(boundaries[:-1], boundaries[1:])
     ]
 
-    total_parts: List[str] = []
-
+    # total_parts: List[str] = []
+    merged = Counter()
     # 并行处理所有 chunk
     with Pool(processes=num_processes) as pool:
-        for parts in pool.map(_process_chunk, tasks):
-            # 把每个进程的结果加到总列表中
-            total_parts.append(parts)
+        # imap_unordered 可以边算边拿结果，不用等所有子进程都结束
+        for i, chunk_counts in enumerate(pool.imap_unordered(_process_chunk, tasks), start=1):
+            merged.update(chunk_counts)
+            if i % 10 == 0:
+                print(f"[pretokenization] merged {i} chunks")
 
-    merged = Counter()
-    for d in total_parts:
-        merged.update(d)
+    # merged = Counter()
+    # 合并所有chunk的words_count
+    # for d in total_parts:
+    #     merged.update(d)
+    print("pretokenization finished")
     return dict(merged)
 
 
 if __name__ == "__main__":
     # pretokenization("../dataset/TinyStoriesV2-GPT4-valid.txt", 32)
-    cProfile.run('pretokenization_parallel("../dataset/TinyStoriesV2-GPT4-train.txt", 128)')
+    cProfile.run('pretokenization_parallel("../dataset/tinystories/TinyStoriesV2-GPT4-train.txt", 128)')
     

@@ -1,5 +1,6 @@
 from .bpe_legacy import PairHeap, init_vocabulary, init_tokens
-from .pretokenization_example import pretokenization_parallel, pretokenization_serial
+from .pretokenization_txt import pretokenization_parallel, pretokenization_serial
+from tqdm import tqdm
 
 class Node:
     def __init__(self, token, word_id):
@@ -152,7 +153,7 @@ def train_bpe(input_path: str,
     special_tokens: list[str],
     **kwargs,)-> tuple[dict[int, bytes], list[tuple[bytes, bytes]]]:
 
-    words_count = pretokenization_parallel(input_path, 32)
+    words_count = pretokenization_parallel(input_path, 32, special_tokens)
     vocab = {i: bytes([i]) for i in range(256)}
     vocab = init_vocabulary(vocab, special_tokens)
     words_token, pair2freq, words_id_count = init_tokens(words_count)
@@ -167,19 +168,25 @@ def train_bpe(input_path: str,
 
     heap = PairHeap(pair2freq, vocab)
     merges = []
+    # 初始化进度条
+    pbar = tqdm(total=vocab_size, desc="Building BPE Vocab", ncols=100)
+    pbar.update(len(vocab))  # 初始 vocab 已经有 256 个 token，提前前进
+
+    
     while(len(vocab) < vocab_size):
-        if(len(vocab) % 100 == 0):
-            print(f"Current vocab size:{len(vocab)}")
+        # if(len(vocab) % 100 == 0):
+        #     print(f"Current vocab size:{len(vocab)}")
         # max_pair = max(pair2freq, key=pair2freq.get)
         # char_pair = tuple(vocab[i].decode('utf-8') for i in max_pair)
         best_pair, freq = heap.pop_best()
-        rev_vocab = {tok_bytes: tok_id for tok_id, tok_bytes in vocab.items()}
+        # rev_vocab = {tok_bytes: tok_id for tok_id, tok_bytes in vocab.items()}
 
         if best_pair == None:
             break
 
         A, B = best_pair
         new_tok = len(vocab)
+        #
         merged_bytes = vocab[A] + vocab[B]
         merges.append((vocab[A], vocab[B]))
         vocab[new_tok] = merged_bytes
@@ -196,10 +203,12 @@ def train_bpe(input_path: str,
         for p in affected_pairs: 
             # 这里的push_updated实际上是：检查这些pair对应的freq，如果大于0就加入其中。真正的丢弃发生在pop时，如果检查到和现在的freq不一致才会丢弃掉状态
             heap.push_updated(p)
-
+        pbar.update(1)  # 每新增 1 个 token，进度条前进 1
+        
+    pbar.close()
     return vocab, merges
 
 if __name__ == "__main__":
-    vocab, merges = train_bpe("../dataset/TinyStoriesV2-GPT4-valid.txt", 10000, ["<|endoftext|>"])
+    vocab, merges = train_bpe("../dataset/tinystories/TinyStoriesV2-GPT4-valid.txt", 10000, ["<|endoftext|>"])
     # cProfile.run('train_bpe()')
     pass
