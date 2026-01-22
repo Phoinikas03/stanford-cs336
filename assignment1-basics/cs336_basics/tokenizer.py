@@ -176,6 +176,7 @@ class Tokenizer:
             best_rank = None
             best_pos = None
 
+            # 这里每次遍历找rank最小的pair，但其实可以用优先队列来优化，每次都只找rank最小的pair，这样时间复杂度可以降到O(nlogn)
             for i in range(len(ids) - 1):
                 pair = (ids[i], ids[i + 1])
                 rank = self._merge_ranks.get(pair)
