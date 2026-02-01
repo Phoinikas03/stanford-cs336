@@ -46,7 +46,9 @@ class RotaryPositionalEmbeddings(nn.Module):
             the sequence dimension.
         """
         # cos/sin的形状是 (seq_len, half_d)
-        cos, sin = self.cos_sin[:, token_positions, :]
+        # 先分离 cos 和 sin，再用 token_positions 索引
+        cos = self.cos_sin[0][token_positions]  # (batch, seq, d_k//2)
+        sin = self.cos_sin[1][token_positions]  # (batch, seq, d_k//2)
         # (half_d xy) 代表将最后一个维度拆成两个子维度的乘积
         # 这一解包操作会将这个 xy 维度拆开：x1 拿到了 xy=0 的部分。x2 拿到了 xy=1 的部分。
         x1, x2 = rearrange(x, "... (half_d xy) -> xy ... half_d", xy=2)
