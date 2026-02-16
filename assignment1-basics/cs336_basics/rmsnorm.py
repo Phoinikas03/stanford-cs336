@@ -19,4 +19,5 @@ class RMSNorm(nn.Module):
         """
         Process an input tensor of shape (batch_size, sequence_length, d_model) and return a tensor of the same shape.
         """
+        # rsqrt is Reciprocal Square Root
         return x * torch.rsqrt(torch.mean(x**2, dim=-1, keepdim=True) + self.eps) * self.weight

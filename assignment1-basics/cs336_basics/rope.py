@@ -47,14 +47,21 @@ class RotaryPositionalEmbeddings(nn.Module):
         """
         # cos/sin的形状是 (seq_len, half_d)
         # 先分离 cos 和 sin，再用 token_positions 索引
-        cos = self.cos_sin[0][token_positions]  # (batch, seq, d_k//2)
-        sin = self.cos_sin[1][token_positions]  # (batch, seq, d_k//2)
+        cos = self.cos_sin[0][token_positions]  # (..., seq, d_k//2)
+        sin = self.cos_sin[1][token_positions]  # (..., seq, d_k//2)
         # (half_d xy) 代表将最后一个维度拆成两个子维度的乘积
         # 这一解包操作会将这个 xy 维度拆开：x1 拿到了 xy=0 的部分。x2 拿到了 xy=1 的部分。
         x1, x2 = rearrange(x, "... (half_d xy) -> xy ... half_d", xy=2)
         # x1：包含了原特征维度中所有偶数索引的元素（x0, x2, x4, ...）
         # x2：包含了原特征维度中所有奇数索引的元素（x1, x3, x5, ...）
-        # x1/x2的形状是 (batch, seq_len, half_d)
+        # x1/x2的形状可能是 (batch, seq_len, half_d) 或 (batch, head, seq_len, half_d)
+        
+        # 为了支持多头注意力，需要确保 cos/sin 的维度数与 x1/x2 匹配
+        # 如果 x1 的维度数比 cos 多（例如有 head 维度），则在适当位置添加维度
+        while cos.ndim < x1.ndim:
+            # 在 seq_len 之前插入新维度（保持最后两个维度 [seq_len, half_d] 不变）
+            cos = cos.unsqueeze(-3)
+            sin = sin.unsqueeze(-3)
 
         x1_rot = cos * x1 - sin * x2
         x2_rot = sin * x1 + cos * x2

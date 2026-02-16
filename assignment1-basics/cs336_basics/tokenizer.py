@@ -328,10 +328,132 @@ class Tokenizer:
 
         return "".join(parts)
 
+import numpy as np
+import subprocess
+from tqdm import tqdm
+from time import sleep
+from multiprocessing import Pool, cpu_count
+
+def _encode_batch(args):
+    """
+    用于multiprocessing的辅助函数，批量处理多行
+    
+    Parameters
+    ----------
+    args : tuple
+        (lines_list, vocab_filepath, merges_filepath, special_tokens)
+    
+    Returns
+    -------
+    list[list[int]]
+        每行编码后的token ids列表
+    """
+    lines_list, vocab_filepath, merges_filepath, special_tokens = args
+    # 每个进程只加载一次tokenizer
+    tokenizer = Tokenizer.from_files(vocab_filepath, merges_filepath, special_tokens=special_tokens)
+    
+    # 批量处理所有lines
+    results = []
+    for line in lines_list:
+        results.append(tokenizer.encode(line))
+    return results
 
 if __name__ == '__main__':
-    mytokenizer = Tokenizer.from_files("../artifacts/tinystories_vocab.pkl", "../artifacts/tinystories_merges.pkl")
-    test_str = "I like apple."
-    encoded_ids = mytokenizer.encode(test_str)
-    result = mytokenizer.decode(encoded_ids)
-    print(result)
+    vocab_filepath = "../artifacts/tinystories_vocab.pkl"
+    merges_filepath = "../artifacts/tinystories_merges.pkl"
+    special_tokens = ["<|endoftext|>"]
+    
+    mytokenizer = Tokenizer.from_files(vocab_filepath, merges_filepath, special_tokens=special_tokens)
+    print("tokenizer info:", f"vocab size: {len(mytokenizer.vocab)}, merges size: {len(mytokenizer.merges)}")
+    
+    file_path = "../dataset/tinystories/TinyStoriesV2-GPT4-train.txt"
+    buffer = []
+    total_tokens = 0
+    buffer_size = 1000000
+    
+    # 使用 uint16 可以节省一半空间（如果你 vocab size < 65535）
+    # 如果 vocab > 65535，则必须用 np.uint32 或 np.int32
+    dtype = np.uint16
+    input_path = file_path
+    output_path = "../artifacts/tinystories_train.bin"
+    
+    # 设置并行处理的参数
+    num_workers = 16  
+    lines_per_task = 50000  # 每个任务处理的行数，减少通信开销
+    task_queue_size = num_workers * 2  # 同时提交的任务数，保持worker忙碌
+    
+    print(f"Processing {input_path}...")
+    print(f"Using {num_workers} workers, {lines_per_task} lines per task...")
+    
+    result = subprocess.run(
+            ['wc', '-l', input_path],
+            capture_output=True,
+            text=True
+        )
+    total_lines = int(result.stdout.split()[0])
+
+    with open(input_path, 'r', encoding='utf-8') as f_in, \
+         open(output_path, 'wb') as f_out, \
+         Pool(processes=num_workers) as pool:
+        
+        # 创建进度条
+        pbar = tqdm(total=total_lines, desc="Tokenizing")
+        
+        # 收集一批lines，准备分配给workers
+        lines_batch = []
+        tasks = []
+        
+        for line in f_in:
+            lines_batch.append(line)
+            
+            # 当累积了足够的行，创建一个任务
+            if len(lines_batch) >= lines_per_task:
+                # 每个任务包含整批lines
+                task = pool.apply_async(_encode_batch, 
+                                       ((lines_batch, vocab_filepath, merges_filepath, special_tokens),))
+                tasks.append((task, len(lines_batch)))
+                lines_batch = []
+                
+                # 如果任务队列满了，开始处理完成的任务
+                if len(tasks) >= task_queue_size:
+                    # 取出最早提交的任务，等待其完成
+                    completed_task, task_line_count = tasks.pop(0)
+                    batch_results = completed_task.get()  # 返回 list[list[int]]
+                    
+                    # 将所有结果加入buffer
+                    for ids in batch_results:
+                        buffer.extend(ids)
+                        
+                        # 如果缓冲区满了，写入磁盘
+                        if len(buffer) >= buffer_size:
+                            arr = np.array(buffer, dtype=dtype)
+                            f_out.write(arr.tobytes())
+                            total_tokens += len(buffer)
+                            buffer = []
+                    
+                    pbar.update(task_line_count)
+                    pbar.set_postfix({"tokens": f"{total_tokens:,}"})
+        
+        # 提交最后不足一批的lines
+        if lines_batch:
+            task = pool.apply_async(_encode_batch, 
+                                   ((lines_batch, vocab_filepath, merges_filepath, special_tokens),))
+            tasks.append((task, len(lines_batch)))
+        
+        # 处理所有剩余的任务
+        for completed_task, task_line_count in tasks:
+            batch_results = completed_task.get()
+            for ids in batch_results:
+                buffer.extend(ids)
+            pbar.update(task_line_count)
+        
+        pbar.close()
+        
+        # 写入剩余的数据
+        if buffer:
+            arr = np.array(buffer, dtype=dtype)
+            f_out.write(arr.tobytes())
+            total_tokens += len(buffer)
+            
+    print(f"Finished. Total tokens: {total_tokens}")
+    print(f"Saved to {output_path}")

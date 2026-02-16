@@ -1,0 +1,1022 @@
+(base) xiazeyu@d01:/mnt/data_x3/xiazeyu/stanford-cs336-main/assignment1-basics/cs
+336_basics$ conda activate cs336
+(cs336) xiazeyu@d01:/mnt/data_x3/xiazeyu/stanford-cs336-main/assignment1-basics/c
+s336_basics$ cd /mnt/data_x3/xiazeyu/stanford-cs336-main/assignment1-basics/cs336
+_basics
+(cs336) xiazeyu@d01:/mnt/data_x3/xiazeyu/stanford-cs336-main/assignment1-basics/c
+s336_basics$ python train_loop.py
+模型参数数量: 22,696,448
+训练数据加载完成:
+  - 文件路径: ../artifacts/tinystories_train.bin
+  - Token 总数: 540,803,381
+  - 数据类型: uint16
+  - 内存占用: 1031.50 MB (虚拟，实际按需加载)
+total_steps: 10000
+
+训练设备: cuda
+总训练步数: 10000
+评估间隔: 100 步
+Step 1/10000 | Train Loss: 9.2507 | Eval Train Loss: 9.1185
+Step 10/10000 | Train Loss: 8.1991
+Step 20/10000 | Train Loss: 7.4005
+Step 30/10000 | Train Loss: 6.7233
+Step 40/10000 | Train Loss: 6.1226
+Step 50/10000 | Train Loss: 5.6966
+Step 60/10000 | Train Loss: 5.3506
+Step 70/10000 | Train Loss: 5.0636
+Step 80/10000 | Train Loss: 4.8680
+Step 90/10000 | Train Loss: 4.6912
+Step 100/10000 | Train Loss: 4.5114 | Eval Train Loss: 4.5005
+Step 110/10000 | Train Loss: 4.3799
+Step 120/10000 | Train Loss: 4.2251
+Step 130/10000 | Train Loss: 4.1459
+Step 140/10000 | Train Loss: 3.9981
+Step 150/10000 | Train Loss: 3.9675
+Step 160/10000 | Train Loss: 3.8944
+Step 170/10000 | Train Loss: 3.8830
+Step 180/10000 | Train Loss: 3.7960
+Step 190/10000 | Train Loss: 3.6771
+Step 200/10000 | Train Loss: 3.6710 | Eval Train Loss: 3.6371
+Step 210/10000 | Train Loss: 3.5864
+Step 220/10000 | Train Loss: 3.5928
+Step 230/10000 | Train Loss: 3.5117
+Step 240/10000 | Train Loss: 3.4537
+Step 250/10000 | Train Loss: 3.3417
+Step 260/10000 | Train Loss: 3.3984
+Step 270/10000 | Train Loss: 3.3322
+Step 280/10000 | Train Loss: 3.3887
+Step 290/10000 | Train Loss: 3.2925
+Step 300/10000 | Train Loss: 3.2492 | Eval Train Loss: 3.3078
+Step 310/10000 | Train Loss: 3.2343
+Step 320/10000 | Train Loss: 3.2773
+Step 330/10000 | Train Loss: 3.2499
+Step 340/10000 | Train Loss: 3.2096
+Step 350/10000 | Train Loss: 3.1233
+Step 360/10000 | Train Loss: 3.0687
+Step 370/10000 | Train Loss: 3.1451
+Step 380/10000 | Train Loss: 3.1129
+Step 390/10000 | Train Loss: 3.1014
+Step 400/10000 | Train Loss: 3.0483 | Eval Train Loss: 3.0699
+Step 410/10000 | Train Loss: 3.0420
+Step 420/10000 | Train Loss: 3.0281
+Step 430/10000 | Train Loss: 3.0020
+Step 440/10000 | Train Loss: 2.9830
+Step 450/10000 | Train Loss: 3.0197
+Step 460/10000 | Train Loss: 2.9754
+Step 470/10000 | Train Loss: 2.9582
+Step 480/10000 | Train Loss: 2.9331
+Step 490/10000 | Train Loss: 2.9647
+Step 500/10000 | Train Loss: 2.9405 | Eval Train Loss: 2.9194
+Step 510/10000 | Train Loss: 2.8571
+Step 520/10000 | Train Loss: 2.8738
+Step 530/10000 | Train Loss: 2.9544
+Step 540/10000 | Train Loss: 2.9071
+Step 550/10000 | Train Loss: 2.8871
+Step 560/10000 | Train Loss: 2.8536
+Step 570/10000 | Train Loss: 2.8522
+Step 580/10000 | Train Loss: 2.8560
+Step 590/10000 | Train Loss: 2.8081
+Step 600/10000 | Train Loss: 2.8036 | Eval Train Loss: 2.8103
+Step 610/10000 | Train Loss: 2.7736
+Step 620/10000 | Train Loss: 2.8219
+Step 630/10000 | Train Loss: 2.7948
+Step 640/10000 | Train Loss: 2.8128
+Step 650/10000 | Train Loss: 2.7566
+Step 660/10000 | Train Loss: 2.7331
+Step 670/10000 | Train Loss: 2.6646
+Step 680/10000 | Train Loss: 2.7515
+Step 690/10000 | Train Loss: 2.6964
+Step 700/10000 | Train Loss: 2.7055 | Eval Train Loss: 2.7477
+Step 710/10000 | Train Loss: 2.7187
+Step 720/10000 | Train Loss: 2.7353
+Step 730/10000 | Train Loss: 2.7777
+Step 740/10000 | Train Loss: 2.6927
+Step 750/10000 | Train Loss: 2.6782
+Step 760/10000 | Train Loss: 2.6808
+Step 770/10000 | Train Loss: 2.7254
+Step 780/10000 | Train Loss: 2.6966
+Step 790/10000 | Train Loss: 2.6640
+Step 800/10000 | Train Loss: 2.6412 | Eval Train Loss: 2.6666
+Step 810/10000 | Train Loss: 2.6438
+Step 820/10000 | Train Loss: 2.6530
+Step 830/10000 | Train Loss: 2.7345
+Step 840/10000 | Train Loss: 2.6054
+Step 850/10000 | Train Loss: 2.6437
+Step 860/10000 | Train Loss: 2.6475
+Step 870/10000 | Train Loss: 2.6350
+Step 880/10000 | Train Loss: 2.6121
+Step 890/10000 | Train Loss: 2.5885
+Step 900/10000 | Train Loss: 2.6013 | Eval Train Loss: 2.6113
+Step 910/10000 | Train Loss: 2.5107
+Step 920/10000 | Train Loss: 2.6198
+Step 930/10000 | Train Loss: 2.5591
+Step 940/10000 | Train Loss: 2.5842
+Step 950/10000 | Train Loss: 2.5557
+Step 960/10000 | Train Loss: 2.5649
+Step 970/10000 | Train Loss: 2.5239
+Step 980/10000 | Train Loss: 2.6239
+Step 990/10000 | Train Loss: 2.4907
+Step 1000/10000 | Train Loss: 2.5185 | Eval Train Loss: 2.5544
+Step 1010/10000 | Train Loss: 2.5127
+Step 1020/10000 | Train Loss: 2.4551
+Step 1030/10000 | Train Loss: 2.5567
+Step 1040/10000 | Train Loss: 2.5179
+Step 1050/10000 | Train Loss: 2.5184
+Step 1060/10000 | Train Loss: 2.4986
+Step 1070/10000 | Train Loss: 2.5240
+Step 1080/10000 | Train Loss: 2.5099
+Step 1090/10000 | Train Loss: 2.4804
+Step 1100/10000 | Train Loss: 2.5297 | Eval Train Loss: 2.5042
+Step 1110/10000 | Train Loss: 2.4807
+Step 1120/10000 | Train Loss: 2.4782
+Step 1130/10000 | Train Loss: 2.5391
+Step 1140/10000 | Train Loss: 2.4428
+Step 1150/10000 | Train Loss: 2.5565
+Step 1160/10000 | Train Loss: 2.5014
+Step 1170/10000 | Train Loss: 2.4933
+Step 1180/10000 | Train Loss: 2.4373
+Step 1190/10000 | Train Loss: 2.4655
+Step 1200/10000 | Train Loss: 2.5251 | Eval Train Loss: 2.4615
+Step 1210/10000 | Train Loss: 2.5381
+Step 1220/10000 | Train Loss: 2.5219
+Step 1230/10000 | Train Loss: 2.4653
+Step 1240/10000 | Train Loss: 2.3773
+Step 1250/10000 | Train Loss: 2.4254
+Step 1260/10000 | Train Loss: 2.4593
+Step 1270/10000 | Train Loss: 2.4455
+Step 1280/10000 | Train Loss: 2.4339
+Step 1290/10000 | Train Loss: 2.4408
+Step 1300/10000 | Train Loss: 2.4635 | Eval Train Loss: 2.4315
+Step 1310/10000 | Train Loss: 2.3782
+Step 1320/10000 | Train Loss: 2.4521
+Step 1330/10000 | Train Loss: 2.3741
+Step 1340/10000 | Train Loss: 2.3891
+Step 1350/10000 | Train Loss: 2.3747
+Step 1360/10000 | Train Loss: 2.4103
+Step 1370/10000 | Train Loss: 2.3512
+Step 1380/10000 | Train Loss: 2.3484
+Step 1390/10000 | Train Loss: 2.3482
+Step 1400/10000 | Train Loss: 2.3860 | Eval Train Loss: 2.3986
+Step 1410/10000 | Train Loss: 2.3824
+Step 1420/10000 | Train Loss: 2.3314
+Step 1430/10000 | Train Loss: 2.3650
+Step 1440/10000 | Train Loss: 2.4099
+Step 1450/10000 | Train Loss: 2.4031
+Step 1460/10000 | Train Loss: 2.3652
+Step 1470/10000 | Train Loss: 2.3517
+Step 1480/10000 | Train Loss: 2.3604
+Step 1490/10000 | Train Loss: 2.3932
+Step 1500/10000 | Train Loss: 2.3395 | Eval Train Loss: 2.3688
+Step 1510/10000 | Train Loss: 2.3506
+Step 1520/10000 | Train Loss: 2.3932
+Step 1530/10000 | Train Loss: 2.3411
+Step 1540/10000 | Train Loss: 2.3605
+Step 1550/10000 | Train Loss: 2.3470
+Step 1560/10000 | Train Loss: 2.3519
+Step 1570/10000 | Train Loss: 2.3166
+Step 1580/10000 | Train Loss: 2.3310
+Step 1590/10000 | Train Loss: 2.3341
+Step 1600/10000 | Train Loss: 2.4047 | Eval Train Loss: 2.3221
+Step 1610/10000 | Train Loss: 2.3303
+Step 1620/10000 | Train Loss: 2.3715
+Step 1630/10000 | Train Loss: 2.2749
+Step 1640/10000 | Train Loss: 2.3454
+Step 1650/10000 | Train Loss: 2.3625
+Step 1660/10000 | Train Loss: 2.3154
+Step 1670/10000 | Train Loss: 2.2988
+Step 1680/10000 | Train Loss: 2.3398
+Step 1690/10000 | Train Loss: 2.3395
+Step 1700/10000 | Train Loss: 2.3520 | Eval Train Loss: 2.3053
+Step 1710/10000 | Train Loss: 2.2437
+Step 1720/10000 | Train Loss: 2.2504
+Step 1730/10000 | Train Loss: 2.2058
+Step 1740/10000 | Train Loss: 2.2743
+Step 1750/10000 | Train Loss: 2.3237
+Step 1760/10000 | Train Loss: 2.3195
+Step 1770/10000 | Train Loss: 2.2780
+Step 1780/10000 | Train Loss: 2.3537
+Step 1790/10000 | Train Loss: 2.2897
+Step 1800/10000 | Train Loss: 2.2707 | Eval Train Loss: 2.2654
+Step 1810/10000 | Train Loss: 2.2795
+Step 1820/10000 | Train Loss: 2.2749
+Step 1830/10000 | Train Loss: 2.2378
+Step 1840/10000 | Train Loss: 2.3497
+Step 1850/10000 | Train Loss: 2.2531
+Step 1860/10000 | Train Loss: 2.2634
+Step 1870/10000 | Train Loss: 2.2091
+Step 1880/10000 | Train Loss: 2.2908
+Step 1890/10000 | Train Loss: 2.2478
+Step 1900/10000 | Train Loss: 2.2479 | Eval Train Loss: 2.2423
+Step 1910/10000 | Train Loss: 2.2510
+Step 1920/10000 | Train Loss: 2.2059
+Step 1930/10000 | Train Loss: 2.1908
+Step 1940/10000 | Train Loss: 2.2861
+Step 1950/10000 | Train Loss: 2.2231
+Step 1960/10000 | Train Loss: 2.1739
+Step 1970/10000 | Train Loss: 2.2521
+Step 1980/10000 | Train Loss: 2.2087
+Step 1990/10000 | Train Loss: 2.2027
+Step 2000/10000 | Train Loss: 2.1993 | Eval Train Loss: 2.2489
+Step 2010/10000 | Train Loss: 2.1930
+Step 2020/10000 | Train Loss: 2.2682
+Step 2030/10000 | Train Loss: 2.1783
+Step 2040/10000 | Train Loss: 2.2512
+Step 2050/10000 | Train Loss: 2.1403
+Step 2060/10000 | Train Loss: 2.2197
+Step 2070/10000 | Train Loss: 2.2086
+Step 2080/10000 | Train Loss: 2.1941
+Step 2090/10000 | Train Loss: 2.1754
+Step 2100/10000 | Train Loss: 2.1800 | Eval Train Loss: 2.2253
+Step 2110/10000 | Train Loss: 2.2112
+Step 2120/10000 | Train Loss: 2.2097
+Step 2130/10000 | Train Loss: 2.1830
+Step 2140/10000 | Train Loss: 2.1711
+Step 2150/10000 | Train Loss: 2.1578
+Step 2160/10000 | Train Loss: 2.2559
+Step 2170/10000 | Train Loss: 2.1570
+Step 2180/10000 | Train Loss: 2.2272
+Step 2190/10000 | Train Loss: 2.1673
+Step 2200/10000 | Train Loss: 2.2236 | Eval Train Loss: 2.1900
+Step 2210/10000 | Train Loss: 2.1821
+Step 2220/10000 | Train Loss: 2.1227
+Step 2230/10000 | Train Loss: 2.1974
+Step 2240/10000 | Train Loss: 2.1948
+Step 2250/10000 | Train Loss: 2.1711
+Step 2260/10000 | Train Loss: 2.1324
+Step 2270/10000 | Train Loss: 2.2255
+Step 2280/10000 | Train Loss: 2.1390
+Step 2290/10000 | Train Loss: 2.1004
+Step 2300/10000 | Train Loss: 2.1483 | Eval Train Loss: 2.1901
+Step 2310/10000 | Train Loss: 2.1687
+Step 2320/10000 | Train Loss: 2.1487
+Step 2330/10000 | Train Loss: 2.1450
+Step 2340/10000 | Train Loss: 2.1769
+Step 2350/10000 | Train Loss: 2.1317
+Step 2360/10000 | Train Loss: 2.2119
+Step 2370/10000 | Train Loss: 2.1224
+Step 2380/10000 | Train Loss: 2.1034
+Step 2390/10000 | Train Loss: 2.2083
+Step 2400/10000 | Train Loss: 2.1293 | Eval Train Loss: 2.1421
+Step 2410/10000 | Train Loss: 2.1711
+Step 2420/10000 | Train Loss: 2.1395
+Step 2430/10000 | Train Loss: 2.1494
+Step 2440/10000 | Train Loss: 2.1132
+Step 2450/10000 | Train Loss: 2.1082
+Step 2460/10000 | Train Loss: 2.0895
+Step 2470/10000 | Train Loss: 2.1225
+Step 2480/10000 | Train Loss: 2.1404
+Step 2490/10000 | Train Loss: 2.1896
+Step 2500/10000 | Train Loss: 2.0975 | Eval Train Loss: 2.1231
+Step 2510/10000 | Train Loss: 2.0437
+Step 2520/10000 | Train Loss: 2.1391
+Step 2530/10000 | Train Loss: 2.1542
+Step 2540/10000 | Train Loss: 2.0489
+Step 2550/10000 | Train Loss: 2.1265
+Step 2560/10000 | Train Loss: 2.1279
+Step 2570/10000 | Train Loss: 2.1862
+Step 2580/10000 | Train Loss: 2.0947
+Step 2590/10000 | Train Loss: 2.1203
+Step 2600/10000 | Train Loss: 2.0847 | Eval Train Loss: 2.1236
+Step 2610/10000 | Train Loss: 2.1500
+Step 2620/10000 | Train Loss: 2.0389
+Step 2630/10000 | Train Loss: 2.1635
+Step 2640/10000 | Train Loss: 2.0964
+Step 2650/10000 | Train Loss: 2.1142
+Step 2660/10000 | Train Loss: 2.1419
+Step 2670/10000 | Train Loss: 2.1594
+Step 2680/10000 | Train Loss: 2.0553
+Step 2690/10000 | Train Loss: 2.1129
+Step 2700/10000 | Train Loss: 2.1141 | Eval Train Loss: 2.0814
+Step 2710/10000 | Train Loss: 2.0212
+Step 2720/10000 | Train Loss: 2.0570
+Step 2730/10000 | Train Loss: 2.0680
+Step 2740/10000 | Train Loss: 2.0559
+Step 2750/10000 | Train Loss: 2.0806
+Step 2760/10000 | Train Loss: 2.0542
+Step 2770/10000 | Train Loss: 2.0666
+Step 2780/10000 | Train Loss: 2.0798
+Step 2790/10000 | Train Loss: 2.0809
+Step 2800/10000 | Train Loss: 2.1023 | Eval Train Loss: 2.0745
+Step 2810/10000 | Train Loss: 2.0259
+Step 2820/10000 | Train Loss: 2.0051
+Step 2830/10000 | Train Loss: 2.0463
+Step 2840/10000 | Train Loss: 2.0480
+Step 2850/10000 | Train Loss: 2.0604
+Step 2860/10000 | Train Loss: 2.0798
+Step 2870/10000 | Train Loss: 2.0562
+Step 2880/10000 | Train Loss: 2.0580
+Step 2890/10000 | Train Loss: 2.0961
+Step 2900/10000 | Train Loss: 2.0928 | Eval Train Loss: 2.0749
+Step 2910/10000 | Train Loss: 2.0671
+Step 2920/10000 | Train Loss: 1.9888
+Step 2930/10000 | Train Loss: 1.9951
+Step 2940/10000 | Train Loss: 2.0191
+Step 2950/10000 | Train Loss: 2.0377
+Step 2960/10000 | Train Loss: 2.0256
+Step 2970/10000 | Train Loss: 2.0566
+Step 2980/10000 | Train Loss: 2.0061
+Step 2990/10000 | Train Loss: 2.0895
+Step 3000/10000 | Train Loss: 2.0065 | Eval Train Loss: 2.0673
+Step 3010/10000 | Train Loss: 2.0113
+Step 3020/10000 | Train Loss: 2.0198
+Step 3030/10000 | Train Loss: 2.1211
+Step 3040/10000 | Train Loss: 2.0592
+Step 3050/10000 | Train Loss: 2.0312
+Step 3060/10000 | Train Loss: 2.0048
+Step 3070/10000 | Train Loss: 1.9910
+Step 3080/10000 | Train Loss: 2.0717
+Step 3090/10000 | Train Loss: 2.0011
+Step 3100/10000 | Train Loss: 2.0944 | Eval Train Loss: 2.0294
+Step 3110/10000 | Train Loss: 2.0278
+Step 3120/10000 | Train Loss: 2.0608
+Step 3130/10000 | Train Loss: 2.0024
+Step 3140/10000 | Train Loss: 2.0742
+Step 3150/10000 | Train Loss: 1.9914
+Step 3160/10000 | Train Loss: 1.9804
+Step 3170/10000 | Train Loss: 1.9690
+Step 3180/10000 | Train Loss: 2.0497
+Step 3190/10000 | Train Loss: 2.0268
+Step 3200/10000 | Train Loss: 1.9667 | Eval Train Loss: 2.0218
+Step 3210/10000 | Train Loss: 2.0459
+Step 3220/10000 | Train Loss: 2.0421
+Step 3230/10000 | Train Loss: 2.0121
+Step 3240/10000 | Train Loss: 2.0280
+Step 3250/10000 | Train Loss: 2.0696
+Step 3260/10000 | Train Loss: 2.0003
+Step 3270/10000 | Train Loss: 2.0185
+Step 3280/10000 | Train Loss: 2.0392
+Step 3290/10000 | Train Loss: 2.0298
+Step 3300/10000 | Train Loss: 1.9969 | Eval Train Loss: 2.0078
+Step 3310/10000 | Train Loss: 2.0086
+Step 3320/10000 | Train Loss: 2.0282
+Step 3330/10000 | Train Loss: 2.0538
+Step 3340/10000 | Train Loss: 2.0234
+Step 3350/10000 | Train Loss: 1.9745
+Step 3360/10000 | Train Loss: 2.0021
+Step 3370/10000 | Train Loss: 2.0390
+Step 3380/10000 | Train Loss: 2.0002
+Step 3390/10000 | Train Loss: 1.9404
+Step 3400/10000 | Train Loss: 1.9660 | Eval Train Loss: 2.0228
+Step 3410/10000 | Train Loss: 2.0147
+Step 3420/10000 | Train Loss: 1.9758
+Step 3430/10000 | Train Loss: 1.9973
+Step 3440/10000 | Train Loss: 1.9767
+Step 3450/10000 | Train Loss: 1.9940
+Step 3460/10000 | Train Loss: 2.0392
+Step 3470/10000 | Train Loss: 2.0083
+Step 3480/10000 | Train Loss: 1.9838
+Step 3490/10000 | Train Loss: 1.9692
+Step 3500/10000 | Train Loss: 2.0162 | Eval Train Loss: 2.0009
+Step 3510/10000 | Train Loss: 1.9401
+Step 3520/10000 | Train Loss: 2.0265
+Step 3530/10000 | Train Loss: 1.9762
+Step 3540/10000 | Train Loss: 1.9741
+Step 3550/10000 | Train Loss: 1.9498
+Step 3560/10000 | Train Loss: 1.9918
+Step 3570/10000 | Train Loss: 2.0524
+Step 3580/10000 | Train Loss: 1.9760
+Step 3590/10000 | Train Loss: 2.0032
+Step 3600/10000 | Train Loss: 1.9806 | Eval Train Loss: 1.9773
+Step 3610/10000 | Train Loss: 1.9683
+Step 3620/10000 | Train Loss: 1.9858
+Step 3630/10000 | Train Loss: 2.0215
+Step 3640/10000 | Train Loss: 1.9632
+Step 3650/10000 | Train Loss: 1.9783
+Step 3660/10000 | Train Loss: 1.9940
+Step 3670/10000 | Train Loss: 1.9916
+Step 3680/10000 | Train Loss: 1.9868
+Step 3690/10000 | Train Loss: 2.0145
+Step 3700/10000 | Train Loss: 2.0278 | Eval Train Loss: 1.9781
+Step 3710/10000 | Train Loss: 1.9629
+Step 3720/10000 | Train Loss: 1.9615
+Step 3730/10000 | Train Loss: 2.0087
+Step 3740/10000 | Train Loss: 1.9506
+Step 3750/10000 | Train Loss: 1.9537
+Step 3760/10000 | Train Loss: 1.9898
+Step 3770/10000 | Train Loss: 2.0112
+Step 3780/10000 | Train Loss: 1.9996
+Step 3790/10000 | Train Loss: 1.9640
+Step 3800/10000 | Train Loss: 1.9612 | Eval Train Loss: 1.9501
+Step 3810/10000 | Train Loss: 1.9752
+Step 3820/10000 | Train Loss: 1.9699
+Step 3830/10000 | Train Loss: 1.9936
+Step 3840/10000 | Train Loss: 1.9196
+Step 3850/10000 | Train Loss: 1.9268
+Step 3860/10000 | Train Loss: 1.9887
+Step 3870/10000 | Train Loss: 2.0001
+Step 3880/10000 | Train Loss: 1.9631
+Step 3890/10000 | Train Loss: 1.9610
+Step 3900/10000 | Train Loss: 1.9367 | Eval Train Loss: 1.9680
+Step 3910/10000 | Train Loss: 1.9738
+Step 3920/10000 | Train Loss: 1.9466
+Step 3930/10000 | Train Loss: 1.9546
+Step 3940/10000 | Train Loss: 1.9806
+Step 3950/10000 | Train Loss: 1.9528
+Step 3960/10000 | Train Loss: 1.9264
+Step 3970/10000 | Train Loss: 1.9303
+Step 3980/10000 | Train Loss: 1.9164
+Step 3990/10000 | Train Loss: 1.9260
+Step 4000/10000 | Train Loss: 1.9804 | Eval Train Loss: 1.9413
+Step 4010/10000 | Train Loss: 1.9366
+Step 4020/10000 | Train Loss: 1.9152
+Step 4030/10000 | Train Loss: 1.9240
+Step 4040/10000 | Train Loss: 1.8842
+Step 4050/10000 | Train Loss: 1.9899
+Step 4060/10000 | Train Loss: 1.9328
+Step 4070/10000 | Train Loss: 1.9106
+Step 4080/10000 | Train Loss: 1.8990
+Step 4090/10000 | Train Loss: 1.9141
+Step 4100/10000 | Train Loss: 1.9261 | Eval Train Loss: 1.9245
+Step 4110/10000 | Train Loss: 1.8826
+Step 4120/10000 | Train Loss: 1.9069
+Step 4130/10000 | Train Loss: 1.9459
+Step 4140/10000 | Train Loss: 1.8827
+Step 4150/10000 | Train Loss: 1.9363
+Step 4160/10000 | Train Loss: 1.9091
+Step 4170/10000 | Train Loss: 1.9642
+Step 4180/10000 | Train Loss: 1.9865
+Step 4190/10000 | Train Loss: 1.8807
+Step 4200/10000 | Train Loss: 1.9632 | Eval Train Loss: 1.9215
+Step 4210/10000 | Train Loss: 1.8979
+Step 4220/10000 | Train Loss: 1.9183
+Step 4230/10000 | Train Loss: 1.8719
+Step 4240/10000 | Train Loss: 1.9686
+Step 4250/10000 | Train Loss: 1.9014
+Step 4260/10000 | Train Loss: 1.8888
+Step 4270/10000 | Train Loss: 1.9140
+Step 4280/10000 | Train Loss: 1.9179
+Step 4290/10000 | Train Loss: 1.9232
+Step 4300/10000 | Train Loss: 1.9038 | Eval Train Loss: 1.9015
+Step 4310/10000 | Train Loss: 1.8820
+Step 4320/10000 | Train Loss: 1.9238
+Step 4330/10000 | Train Loss: 1.8865
+Step 4340/10000 | Train Loss: 1.9093
+Step 4350/10000 | Train Loss: 1.8822
+Step 4360/10000 | Train Loss: 1.8545
+Step 4370/10000 | Train Loss: 1.8856
+Step 4380/10000 | Train Loss: 1.9132
+Step 4390/10000 | Train Loss: 1.9186
+Step 4400/10000 | Train Loss: 1.9496 | Eval Train Loss: 1.9093
+Step 4410/10000 | Train Loss: 1.9050
+Step 4420/10000 | Train Loss: 1.9248
+Step 4430/10000 | Train Loss: 1.9093
+Step 4440/10000 | Train Loss: 1.9147
+Step 4450/10000 | Train Loss: 1.7986
+Step 4460/10000 | Train Loss: 1.9204
+Step 4470/10000 | Train Loss: 1.8495
+Step 4480/10000 | Train Loss: 1.8554
+Step 4490/10000 | Train Loss: 1.9602
+Step 4500/10000 | Train Loss: 1.8827 | Eval Train Loss: 1.9076
+Step 4510/10000 | Train Loss: 1.9330
+Step 4520/10000 | Train Loss: 1.9377
+Step 4530/10000 | Train Loss: 1.8575
+Step 4540/10000 | Train Loss: 1.8986
+Step 4550/10000 | Train Loss: 1.8818
+Step 4560/10000 | Train Loss: 1.8827
+Step 4570/10000 | Train Loss: 1.8814
+Step 4580/10000 | Train Loss: 1.9028
+Step 4590/10000 | Train Loss: 1.8956
+Step 4600/10000 | Train Loss: 1.8943 | Eval Train Loss: 1.8627
+Step 4610/10000 | Train Loss: 1.8862
+Step 4620/10000 | Train Loss: 1.9153
+Step 4630/10000 | Train Loss: 1.9120
+Step 4640/10000 | Train Loss: 1.8370
+Step 4650/10000 | Train Loss: 1.9030
+Step 4660/10000 | Train Loss: 1.9065
+Step 4670/10000 | Train Loss: 1.8760
+Step 4680/10000 | Train Loss: 1.8512
+Step 4690/10000 | Train Loss: 1.9222
+Step 4700/10000 | Train Loss: 1.9489 | Eval Train Loss: 1.8829
+Step 4710/10000 | Train Loss: 1.8776
+Step 4720/10000 | Train Loss: 1.8683
+Step 4730/10000 | Train Loss: 1.8734
+Step 4740/10000 | Train Loss: 1.9142
+Step 4750/10000 | Train Loss: 1.8891
+Step 4760/10000 | Train Loss: 1.8502
+Step 4770/10000 | Train Loss: 1.8621
+Step 4780/10000 | Train Loss: 1.8904
+Step 4790/10000 | Train Loss: 1.7675
+Step 4800/10000 | Train Loss: 1.8784 | Eval Train Loss: 1.8452
+Step 4810/10000 | Train Loss: 1.8847
+Step 4820/10000 | Train Loss: 1.7897
+Step 4830/10000 | Train Loss: 1.8849
+Step 4840/10000 | Train Loss: 1.8468
+Step 4850/10000 | Train Loss: 1.8717
+Step 4860/10000 | Train Loss: 1.8365
+Step 4870/10000 | Train Loss: 1.8757
+Step 4880/10000 | Train Loss: 1.8532
+Step 4890/10000 | Train Loss: 1.8625
+Step 4900/10000 | Train Loss: 1.8910 | Eval Train Loss: 1.8632
+Step 4910/10000 | Train Loss: 1.8221
+Step 4920/10000 | Train Loss: 1.8579
+Step 4930/10000 | Train Loss: 1.8782
+Step 4940/10000 | Train Loss: 1.8653
+Step 4950/10000 | Train Loss: 1.8578
+Step 4960/10000 | Train Loss: 1.9239
+Step 4970/10000 | Train Loss: 1.7996
+Step 4980/10000 | Train Loss: 1.9274
+Step 4990/10000 | Train Loss: 1.9184
+Step 5000/10000 | Train Loss: 1.9082 | Eval Train Loss: 1.8599
+Step 5010/10000 | Train Loss: 1.8721
+Step 5020/10000 | Train Loss: 1.8664
+Step 5030/10000 | Train Loss: 1.8680
+Step 5040/10000 | Train Loss: 1.8640
+Step 5050/10000 | Train Loss: 1.9113
+Step 5060/10000 | Train Loss: 1.8258
+Step 5070/10000 | Train Loss: 1.8894
+Step 5080/10000 | Train Loss: 1.7796
+Step 5090/10000 | Train Loss: 1.8468
+Step 5100/10000 | Train Loss: 1.8167 | Eval Train Loss: 1.8512
+Step 5110/10000 | Train Loss: 1.8914
+Step 5120/10000 | Train Loss: 1.9112
+Step 5130/10000 | Train Loss: 1.8147
+Step 5140/10000 | Train Loss: 1.8913
+Step 5150/10000 | Train Loss: 1.7959
+Step 5160/10000 | Train Loss: 1.8523
+Step 5170/10000 | Train Loss: 1.8330
+Step 5180/10000 | Train Loss: 1.8715
+Step 5190/10000 | Train Loss: 1.8677
+Step 5200/10000 | Train Loss: 1.8334 | Eval Train Loss: 1.8583
+Step 5210/10000 | Train Loss: 1.8946
+Step 5220/10000 | Train Loss: 1.9213
+Step 5230/10000 | Train Loss: 1.8330
+Step 5240/10000 | Train Loss: 1.8238
+Step 5250/10000 | Train Loss: 1.9414
+Step 5260/10000 | Train Loss: 1.8549
+Step 5270/10000 | Train Loss: 1.8420
+Step 5280/10000 | Train Loss: 1.8672
+Step 5290/10000 | Train Loss: 1.9004
+Step 5300/10000 | Train Loss: 1.8168 | Eval Train Loss: 1.8494
+Step 5310/10000 | Train Loss: 1.8406
+Step 5320/10000 | Train Loss: 1.8065
+Step 5330/10000 | Train Loss: 1.7950
+Step 5340/10000 | Train Loss: 1.8216
+Step 5350/10000 | Train Loss: 1.8076
+Step 5360/10000 | Train Loss: 1.8633
+Step 5370/10000 | Train Loss: 1.8624
+Step 5380/10000 | Train Loss: 1.8224
+Step 5390/10000 | Train Loss: 1.7801
+Step 5400/10000 | Train Loss: 1.8461 | Eval Train Loss: 1.8384
+Step 5410/10000 | Train Loss: 1.8679
+Step 5420/10000 | Train Loss: 1.8248
+Step 5430/10000 | Train Loss: 1.8380
+Step 5440/10000 | Train Loss: 1.8646
+Step 5450/10000 | Train Loss: 1.8636
+Step 5460/10000 | Train Loss: 1.8193
+Step 5470/10000 | Train Loss: 1.8871
+Step 5480/10000 | Train Loss: 1.9201
+Step 5490/10000 | Train Loss: 1.8978
+Step 5500/10000 | Train Loss: 1.8030 | Eval Train Loss: 1.8373
+Step 5510/10000 | Train Loss: 1.8305
+Step 5520/10000 | Train Loss: 1.8168
+Step 5530/10000 | Train Loss: 1.9108
+Step 5540/10000 | Train Loss: 1.8761
+Step 5550/10000 | Train Loss: 1.8138
+Step 5560/10000 | Train Loss: 1.8082
+Step 5570/10000 | Train Loss: 1.8429
+Step 5580/10000 | Train Loss: 1.8129
+Step 5590/10000 | Train Loss: 1.7968
+Step 5600/10000 | Train Loss: 1.8848 | Eval Train Loss: 1.8161
+Step 5610/10000 | Train Loss: 1.8450
+Step 5620/10000 | Train Loss: 1.8276
+Step 5630/10000 | Train Loss: 1.8760
+Step 5640/10000 | Train Loss: 1.7909
+Step 5650/10000 | Train Loss: 1.7816
+Step 5660/10000 | Train Loss: 1.8005
+Step 5670/10000 | Train Loss: 1.7931
+Step 5680/10000 | Train Loss: 1.8164
+Step 5690/10000 | Train Loss: 1.8584
+Step 5700/10000 | Train Loss: 1.8339 | Eval Train Loss: 1.8233
+Step 5710/10000 | Train Loss: 1.7250
+Step 5720/10000 | Train Loss: 1.8191
+Step 5730/10000 | Train Loss: 1.7769
+Step 5740/10000 | Train Loss: 1.8311
+Step 5750/10000 | Train Loss: 1.8225
+Step 5760/10000 | Train Loss: 1.8920
+Step 5770/10000 | Train Loss: 1.8088
+Step 5780/10000 | Train Loss: 1.8617
+Step 5790/10000 | Train Loss: 1.8372
+Step 5800/10000 | Train Loss: 1.8573 | Eval Train Loss: 1.7953
+Step 5810/10000 | Train Loss: 1.8368
+Step 5820/10000 | Train Loss: 1.8224
+Step 5830/10000 | Train Loss: 1.8388
+Step 5840/10000 | Train Loss: 1.8150
+Step 5850/10000 | Train Loss: 1.8304
+Step 5860/10000 | Train Loss: 1.7953
+Step 5870/10000 | Train Loss: 1.7638
+Step 5880/10000 | Train Loss: 1.7855
+Step 5890/10000 | Train Loss: 1.8373
+Step 5900/10000 | Train Loss: 1.8551 | Eval Train Loss: 1.7995
+Step 5910/10000 | Train Loss: 1.8126
+Step 5920/10000 | Train Loss: 1.7453
+Step 5930/10000 | Train Loss: 1.7599
+Step 5940/10000 | Train Loss: 1.8441
+Step 5950/10000 | Train Loss: 1.8242
+Step 5960/10000 | Train Loss: 1.8007
+Step 5970/10000 | Train Loss: 1.8255
+Step 5980/10000 | Train Loss: 1.7773
+Step 5990/10000 | Train Loss: 1.7135
+Step 6000/10000 | Train Loss: 1.8024 | Eval Train Loss: 1.8022
+Step 6010/10000 | Train Loss: 1.8161
+Step 6020/10000 | Train Loss: 1.7815
+Step 6030/10000 | Train Loss: 1.7660
+Step 6040/10000 | Train Loss: 1.8537
+Step 6050/10000 | Train Loss: 1.8108
+Step 6060/10000 | Train Loss: 1.7932
+Step 6070/10000 | Train Loss: 1.7919
+Step 6080/10000 | Train Loss: 1.7820
+Step 6090/10000 | Train Loss: 1.7415
+Step 6100/10000 | Train Loss: 1.7613 | Eval Train Loss: 1.7981
+Step 6110/10000 | Train Loss: 1.7612
+Step 6120/10000 | Train Loss: 1.8349
+Step 6130/10000 | Train Loss: 1.8263
+Step 6140/10000 | Train Loss: 1.8514
+Step 6150/10000 | Train Loss: 1.8021
+Step 6160/10000 | Train Loss: 1.7918
+Step 6170/10000 | Train Loss: 1.7679
+Step 6180/10000 | Train Loss: 1.7672
+Step 6190/10000 | Train Loss: 1.7726
+Step 6200/10000 | Train Loss: 1.8065 | Eval Train Loss: 1.7816
+Step 6210/10000 | Train Loss: 1.7600
+Step 6220/10000 | Train Loss: 1.8315
+Step 6230/10000 | Train Loss: 1.7682
+Step 6240/10000 | Train Loss: 1.7937
+Step 6250/10000 | Train Loss: 1.7560
+Step 6260/10000 | Train Loss: 1.7867
+Step 6270/10000 | Train Loss: 1.7792
+Step 6280/10000 | Train Loss: 1.8433
+Step 6290/10000 | Train Loss: 1.8157
+Step 6300/10000 | Train Loss: 1.7654 | Eval Train Loss: 1.7781
+Step 6310/10000 | Train Loss: 1.8170
+Step 6320/10000 | Train Loss: 1.8369
+Step 6330/10000 | Train Loss: 1.7775
+Step 6340/10000 | Train Loss: 1.8633
+Step 6350/10000 | Train Loss: 1.8289
+Step 6360/10000 | Train Loss: 1.7996
+Step 6370/10000 | Train Loss: 1.8554
+Step 6380/10000 | Train Loss: 1.7575
+Step 6390/10000 | Train Loss: 1.8159
+Step 6400/10000 | Train Loss: 1.8255 | Eval Train Loss: 1.7786
+Step 6410/10000 | Train Loss: 1.7803
+Step 6420/10000 | Train Loss: 1.7737
+Step 6430/10000 | Train Loss: 1.7497
+Step 6440/10000 | Train Loss: 1.7953
+Step 6450/10000 | Train Loss: 1.8601
+Step 6460/10000 | Train Loss: 1.7848
+Step 6470/10000 | Train Loss: 1.7878
+Step 6480/10000 | Train Loss: 1.7838
+Step 6490/10000 | Train Loss: 1.7794
+Step 6500/10000 | Train Loss: 1.7590 | Eval Train Loss: 1.7607
+Step 6510/10000 | Train Loss: 1.7529
+Step 6520/10000 | Train Loss: 1.7008
+Step 6530/10000 | Train Loss: 1.7689
+Step 6540/10000 | Train Loss: 1.7374
+Step 6550/10000 | Train Loss: 1.8453
+Step 6560/10000 | Train Loss: 1.7670
+Step 6570/10000 | Train Loss: 1.7512
+Step 6580/10000 | Train Loss: 1.8063
+Step 6590/10000 | Train Loss: 1.7869
+Step 6600/10000 | Train Loss: 1.7658 | Eval Train Loss: 1.7725
+Step 6610/10000 | Train Loss: 1.7954
+Step 6620/10000 | Train Loss: 1.7446
+Step 6630/10000 | Train Loss: 1.7600
+Step 6640/10000 | Train Loss: 1.7138
+Step 6650/10000 | Train Loss: 1.7358
+Step 6660/10000 | Train Loss: 1.8072
+Step 6670/10000 | Train Loss: 1.7546
+Step 6680/10000 | Train Loss: 1.7800
+Step 6690/10000 | Train Loss: 1.7988
+Step 6700/10000 | Train Loss: 1.7818 | Eval Train Loss: 1.7579
+Step 6710/10000 | Train Loss: 1.8138
+Step 6720/10000 | Train Loss: 1.7898
+Step 6730/10000 | Train Loss: 1.8272
+Step 6740/10000 | Train Loss: 1.7792
+Step 6750/10000 | Train Loss: 1.8127
+Step 6760/10000 | Train Loss: 1.7691
+Step 6770/10000 | Train Loss: 1.7646
+Step 6780/10000 | Train Loss: 1.7758
+Step 6790/10000 | Train Loss: 1.7485
+Step 6800/10000 | Train Loss: 1.7729 | Eval Train Loss: 1.7596
+Step 6810/10000 | Train Loss: 1.7352
+Step 6820/10000 | Train Loss: 1.7275
+Step 6830/10000 | Train Loss: 1.7267
+Step 6840/10000 | Train Loss: 1.6927
+Step 6850/10000 | Train Loss: 1.7195
+Step 6860/10000 | Train Loss: 1.7544
+Step 6870/10000 | Train Loss: 1.7569
+Step 6880/10000 | Train Loss: 1.7859
+Step 6890/10000 | Train Loss: 1.8024
+Step 6900/10000 | Train Loss: 1.7339 | Eval Train Loss: 1.7665
+Step 6910/10000 | Train Loss: 1.7253
+Step 6920/10000 | Train Loss: 1.7119
+Step 6930/10000 | Train Loss: 1.7267
+Step 6940/10000 | Train Loss: 1.7489
+Step 6950/10000 | Train Loss: 1.7614
+Step 6960/10000 | Train Loss: 1.7394
+Step 6970/10000 | Train Loss: 1.7394
+Step 6980/10000 | Train Loss: 1.6933
+Step 6990/10000 | Train Loss: 1.7306
+Step 7000/10000 | Train Loss: 1.7680 | Eval Train Loss: 1.7542
+Step 7010/10000 | Train Loss: 1.7251
+Step 7020/10000 | Train Loss: 1.7459
+Step 7030/10000 | Train Loss: 1.8174
+Step 7040/10000 | Train Loss: 1.7815
+Step 7050/10000 | Train Loss: 1.7575
+Step 7060/10000 | Train Loss: 1.7516
+Step 7070/10000 | Train Loss: 1.7421
+Step 7080/10000 | Train Loss: 1.7705
+Step 7090/10000 | Train Loss: 1.7364
+Step 7100/10000 | Train Loss: 1.7573 | Eval Train Loss: 1.7500
+Step 7110/10000 | Train Loss: 1.7221
+Step 7120/10000 | Train Loss: 1.7416
+Step 7130/10000 | Train Loss: 1.7576
+Step 7140/10000 | Train Loss: 1.8173
+Step 7150/10000 | Train Loss: 1.7726
+Step 7160/10000 | Train Loss: 1.7063
+Step 7170/10000 | Train Loss: 1.7757
+Step 7180/10000 | Train Loss: 1.7271
+Step 7190/10000 | Train Loss: 1.6926
+Step 7200/10000 | Train Loss: 1.7213 | Eval Train Loss: 1.7571
+Step 7210/10000 | Train Loss: 1.7381
+Step 7220/10000 | Train Loss: 1.6855
+Step 7230/10000 | Train Loss: 1.7233
+Step 7240/10000 | Train Loss: 1.6959
+Step 7250/10000 | Train Loss: 1.7373
+Step 7260/10000 | Train Loss: 1.7708
+Step 7270/10000 | Train Loss: 1.7608
+Step 7280/10000 | Train Loss: 1.7660
+Step 7290/10000 | Train Loss: 1.7362
+Step 7300/10000 | Train Loss: 1.7780 | Eval Train Loss: 1.7564
+Step 7310/10000 | Train Loss: 1.7946
+Step 7320/10000 | Train Loss: 1.7847
+Step 7330/10000 | Train Loss: 1.7813
+Step 7340/10000 | Train Loss: 1.7608
+Step 7350/10000 | Train Loss: 1.6870
+Step 7360/10000 | Train Loss: 1.7219
+Step 7370/10000 | Train Loss: 1.7808
+Step 7380/10000 | Train Loss: 1.7428
+Step 7390/10000 | Train Loss: 1.6995
+Step 7400/10000 | Train Loss: 1.7030 | Eval Train Loss: 1.7386
+Step 7410/10000 | Train Loss: 1.7558
+Step 7420/10000 | Train Loss: 1.7237
+Step 7430/10000 | Train Loss: 1.7189
+Step 7440/10000 | Train Loss: 1.7775
+Step 7450/10000 | Train Loss: 1.7149
+Step 7460/10000 | Train Loss: 1.7220
+Step 7470/10000 | Train Loss: 1.7558
+Step 7480/10000 | Train Loss: 1.7526
+Step 7490/10000 | Train Loss: 1.7185
+Step 7500/10000 | Train Loss: 1.7088 | Eval Train Loss: 1.7307
+Step 7510/10000 | Train Loss: 1.6985
+Step 7520/10000 | Train Loss: 1.7699
+Step 7530/10000 | Train Loss: 1.7417
+Step 7540/10000 | Train Loss: 1.7609
+Step 7550/10000 | Train Loss: 1.6785
+Step 7560/10000 | Train Loss: 1.7770
+Step 7570/10000 | Train Loss: 1.7232
+Step 7580/10000 | Train Loss: 1.7600
+Step 7590/10000 | Train Loss: 1.7842
+Step 7600/10000 | Train Loss: 1.8365 | Eval Train Loss: 1.7434
+Step 7610/10000 | Train Loss: 1.7293
+Step 7620/10000 | Train Loss: 1.6728
+Step 7630/10000 | Train Loss: 1.7326
+Step 7640/10000 | Train Loss: 1.7631
+Step 7650/10000 | Train Loss: 1.7124
+Step 7660/10000 | Train Loss: 1.6928
+Step 7670/10000 | Train Loss: 1.7472
+Step 7680/10000 | Train Loss: 1.7881
+Step 7690/10000 | Train Loss: 1.7047
+Step 7700/10000 | Train Loss: 1.7398 | Eval Train Loss: 1.7390
+Step 7710/10000 | Train Loss: 1.7481
+Step 7720/10000 | Train Loss: 1.7291
+Step 7730/10000 | Train Loss: 1.7541
+Step 7740/10000 | Train Loss: 1.7013
+Step 7750/10000 | Train Loss: 1.7129
+Step 7760/10000 | Train Loss: 1.6986
+Step 7770/10000 | Train Loss: 1.7342
+Step 7780/10000 | Train Loss: 1.7630
+Step 7790/10000 | Train Loss: 1.7087
+Step 7800/10000 | Train Loss: 1.7174 | Eval Train Loss: 1.7270
+Step 7810/10000 | Train Loss: 1.7434
+Step 7820/10000 | Train Loss: 1.7351
+Step 7830/10000 | Train Loss: 1.7410
+Step 7840/10000 | Train Loss: 1.6833
+Step 7850/10000 | Train Loss: 1.7382
+Step 7860/10000 | Train Loss: 1.7117
+Step 7870/10000 | Train Loss: 1.7281
+Step 7880/10000 | Train Loss: 1.8030
+Step 7890/10000 | Train Loss: 1.7324
+Step 7900/10000 | Train Loss: 1.7329 | Eval Train Loss: 1.7322
+Step 7910/10000 | Train Loss: 1.7284
+Step 7920/10000 | Train Loss: 1.7400
+Step 7930/10000 | Train Loss: 1.7634
+Step 7940/10000 | Train Loss: 1.6735
+Step 7950/10000 | Train Loss: 1.7186
+Step 7960/10000 | Train Loss: 1.7289
+Step 7970/10000 | Train Loss: 1.7016
+Step 7980/10000 | Train Loss: 1.7139
+Step 7990/10000 | Train Loss: 1.7109
+Step 8000/10000 | Train Loss: 1.7218 | Eval Train Loss: 1.7114
+Step 8010/10000 | Train Loss: 1.7320
+Step 8020/10000 | Train Loss: 1.7018
+Step 8030/10000 | Train Loss: 1.7313
+Step 8040/10000 | Train Loss: 1.6871
+Step 8050/10000 | Train Loss: 1.7186
+Step 8060/10000 | Train Loss: 1.6478
+Step 8070/10000 | Train Loss: 1.6610
+Step 8080/10000 | Train Loss: 1.7704
+Step 8090/10000 | Train Loss: 1.6979
+Step 8100/10000 | Train Loss: 1.7211 | Eval Train Loss: 1.7194
+Step 8110/10000 | Train Loss: 1.7243
+Step 8120/10000 | Train Loss: 1.7649
+Step 8130/10000 | Train Loss: 1.6674
+Step 8140/10000 | Train Loss: 1.7054
+Step 8150/10000 | Train Loss: 1.6671
+Step 8160/10000 | Train Loss: 1.7317
+Step 8170/10000 | Train Loss: 1.6852
+Step 8180/10000 | Train Loss: 1.7686
+Step 8190/10000 | Train Loss: 1.7414
+Step 8200/10000 | Train Loss: 1.6813 | Eval Train Loss: 1.7065
+Step 8210/10000 | Train Loss: 1.7660
+Step 8220/10000 | Train Loss: 1.7454
+Step 8230/10000 | Train Loss: 1.7483
+Step 8240/10000 | Train Loss: 1.6892
+Step 8250/10000 | Train Loss: 1.6488
+Step 8260/10000 | Train Loss: 1.6814
+Step 8270/10000 | Train Loss: 1.6689
+Step 8280/10000 | Train Loss: 1.6952
+Step 8290/10000 | Train Loss: 1.6851
+Step 8300/10000 | Train Loss: 1.7201 | Eval Train Loss: 1.7014
+Step 8310/10000 | Train Loss: 1.7290
+Step 8320/10000 | Train Loss: 1.6983
+Step 8330/10000 | Train Loss: 1.6988
+Step 8340/10000 | Train Loss: 1.6715
+Step 8350/10000 | Train Loss: 1.6865
+Step 8360/10000 | Train Loss: 1.6859
+Step 8370/10000 | Train Loss: 1.7351
+Step 8380/10000 | Train Loss: 1.7040
+Step 8390/10000 | Train Loss: 1.6873
+Step 8400/10000 | Train Loss: 1.6898 | Eval Train Loss: 1.7283
+Step 8410/10000 | Train Loss: 1.7093
+Step 8420/10000 | Train Loss: 1.6802
+Step 8430/10000 | Train Loss: 1.7371
+Step 8440/10000 | Train Loss: 1.6734
+Step 8450/10000 | Train Loss: 1.7058
+Step 8460/10000 | Train Loss: 1.7152
+Step 8470/10000 | Train Loss: 1.6870
+Step 8480/10000 | Train Loss: 1.7090
+Step 8490/10000 | Train Loss: 1.7565
+Step 8500/10000 | Train Loss: 1.7309 | Eval Train Loss: 1.7020
+Step 8510/10000 | Train Loss: 1.6210
+Step 8520/10000 | Train Loss: 1.7354
+Step 8530/10000 | Train Loss: 1.7003
+Step 8540/10000 | Train Loss: 1.6718
+Step 8550/10000 | Train Loss: 1.7010
+Step 8560/10000 | Train Loss: 1.7502
+Step 8570/10000 | Train Loss: 1.7016
+Step 8580/10000 | Train Loss: 1.6866
+Step 8590/10000 | Train Loss: 1.7416
+Step 8600/10000 | Train Loss: 1.7312 | Eval Train Loss: 1.7145
+Step 8610/10000 | Train Loss: 1.7341
+Step 8620/10000 | Train Loss: 1.7108
+Step 8630/10000 | Train Loss: 1.7872
+Step 8640/10000 | Train Loss: 1.6983
+Step 8650/10000 | Train Loss: 1.7137
+Step 8660/10000 | Train Loss: 1.6778
+Step 8670/10000 | Train Loss: 1.7013
+Step 8680/10000 | Train Loss: 1.6921
+Step 8690/10000 | Train Loss: 1.6871
+Step 8700/10000 | Train Loss: 1.6812 | Eval Train Loss: 1.6834
+Step 8710/10000 | Train Loss: 1.7231
+Step 8720/10000 | Train Loss: 1.7352
+Step 8730/10000 | Train Loss: 1.7084
+Step 8740/10000 | Train Loss: 1.6952
+Step 8750/10000 | Train Loss: 1.7127
+Step 8760/10000 | Train Loss: 1.6948
+Step 8770/10000 | Train Loss: 1.7169
+Step 8780/10000 | Train Loss: 1.6146
+Step 8790/10000 | Train Loss: 1.7304
+Step 8800/10000 | Train Loss: 1.6771 | Eval Train Loss: 1.7098
+Step 8810/10000 | Train Loss: 1.6896
+Step 8820/10000 | Train Loss: 1.6908
+Step 8830/10000 | Train Loss: 1.7211
+Step 8840/10000 | Train Loss: 1.7157
+Step 8850/10000 | Train Loss: 1.7216
+Step 8860/10000 | Train Loss: 1.6827
+Step 8870/10000 | Train Loss: 1.6714
+Step 8880/10000 | Train Loss: 1.6466
+Step 8890/10000 | Train Loss: 1.6963
+Step 8900/10000 | Train Loss: 1.6599 | Eval Train Loss: 1.7042
+Step 8910/10000 | Train Loss: 1.7139
+Step 8920/10000 | Train Loss: 1.6851
+Step 8930/10000 | Train Loss: 1.7334
+Step 8940/10000 | Train Loss: 1.6803
+Step 8950/10000 | Train Loss: 1.7642
+Step 8960/10000 | Train Loss: 1.6731
+Step 8970/10000 | Train Loss: 1.6703
+Step 8980/10000 | Train Loss: 1.6901
+Step 8990/10000 | Train Loss: 1.7295
+Step 9000/10000 | Train Loss: 1.6614 | Eval Train Loss: 1.6843
+Step 9010/10000 | Train Loss: 1.6807
+Step 9020/10000 | Train Loss: 1.7292
+Step 9030/10000 | Train Loss: 1.6604
+Step 9040/10000 | Train Loss: 1.6744
+Step 9050/10000 | Train Loss: 1.6607
+Step 9060/10000 | Train Loss: 1.7178
+Step 9070/10000 | Train Loss: 1.7171
+Step 9080/10000 | Train Loss: 1.6682
+Step 9090/10000 | Train Loss: 1.6863
+Step 9100/10000 | Train Loss: 1.7004 | Eval Train Loss: 1.7014
+Step 9110/10000 | Train Loss: 1.7480
+Step 9120/10000 | Train Loss: 1.6923
+Step 9130/10000 | Train Loss: 1.7079
+Step 9140/10000 | Train Loss: 1.6494
+Step 9150/10000 | Train Loss: 1.6547
+Step 9160/10000 | Train Loss: 1.7236
+Step 9170/10000 | Train Loss: 1.7111
+Step 9180/10000 | Train Loss: 1.6866
+Step 9190/10000 | Train Loss: 1.7437
+Step 9200/10000 | Train Loss: 1.6897 | Eval Train Loss: 1.7071
+Step 9210/10000 | Train Loss: 1.6734
+Step 9220/10000 | Train Loss: 1.7020
+Step 9230/10000 | Train Loss: 1.7180
+Step 9240/10000 | Train Loss: 1.6739
+Step 9250/10000 | Train Loss: 1.7095
+Step 9260/10000 | Train Loss: 1.6543
+Step 9270/10000 | Train Loss: 1.7008
+Step 9280/10000 | Train Loss: 1.6746
+Step 9290/10000 | Train Loss: 1.6809
+Step 9300/10000 | Train Loss: 1.6384 | Eval Train Loss: 1.6854
+Step 9310/10000 | Train Loss: 1.7062
+Step 9320/10000 | Train Loss: 1.6370
+Step 9330/10000 | Train Loss: 1.6754
+Step 9340/10000 | Train Loss: 1.6167
+Step 9350/10000 | Train Loss: 1.6942
+Step 9360/10000 | Train Loss: 1.6823
+Step 9370/10000 | Train Loss: 1.6725
+Step 9380/10000 | Train Loss: 1.6918
+Step 9390/10000 | Train Loss: 1.7051
+Step 9400/10000 | Train Loss: 1.7219 | Eval Train Loss: 1.6769
+Step 9410/10000 | Train Loss: 1.6886
+Step 9420/10000 | Train Loss: 1.7004
+Step 9430/10000 | Train Loss: 1.6736
+Step 9440/10000 | Train Loss: 1.7327
+Step 9450/10000 | Train Loss: 1.6811
+Step 9460/10000 | Train Loss: 1.7047
+Step 9470/10000 | Train Loss: 1.6780
+Step 9480/10000 | Train Loss: 1.7226
+Step 9490/10000 | Train Loss: 1.6813
+Step 9500/10000 | Train Loss: 1.6274 | Eval Train Loss: 1.6731
+Step 9510/10000 | Train Loss: 1.6657
+Step 9520/10000 | Train Loss: 1.7251
+Step 9530/10000 | Train Loss: 1.7512
+Step 9540/10000 | Train Loss: 1.7036
+Step 9550/10000 | Train Loss: 1.6732
+Step 9560/10000 | Train Loss: 1.6553
+Step 9570/10000 | Train Loss: 1.7074
+Step 9580/10000 | Train Loss: 1.6925
+Step 9590/10000 | Train Loss: 1.6939
+Step 9600/10000 | Train Loss: 1.7151 | Eval Train Loss: 1.6729
+Step 9610/10000 | Train Loss: 1.6848
+Step 9620/10000 | Train Loss: 1.6869
+Step 9630/10000 | Train Loss: 1.6949
+Step 9640/10000 | Train Loss: 1.6767
+Step 9650/10000 | Train Loss: 1.6869
+Step 9660/10000 | Train Loss: 1.7086
+Step 9670/10000 | Train Loss: 1.6706
+Step 9680/10000 | Train Loss: 1.6346
+Step 9690/10000 | Train Loss: 1.7139
+Step 9700/10000 | Train Loss: 1.7190 | Eval Train Loss: 1.6730
+Step 9710/10000 | Train Loss: 1.7174
+Step 9720/10000 | Train Loss: 1.7008
+Step 9730/10000 | Train Loss: 1.7389
+Step 9740/10000 | Train Loss: 1.6436
+Step 9750/10000 | Train Loss: 1.7165
+Step 9760/10000 | Train Loss: 1.6977
+Step 9770/10000 | Train Loss: 1.6922
+Step 9780/10000 | Train Loss: 1.7353
+Step 9790/10000 | Train Loss: 1.6621
+Step 9800/10000 | Train Loss: 1.6874 | Eval Train Loss: 1.6592
+Step 9810/10000 | Train Loss: 1.6568
+Step 9820/10000 | Train Loss: 1.6770
+Step 9830/10000 | Train Loss: 1.6191
+Step 9840/10000 | Train Loss: 1.6899
+Step 9850/10000 | Train Loss: 1.7004
+Step 9860/10000 | Train Loss: 1.6390
+Step 9870/10000 | Train Loss: 1.7177
+Step 9880/10000 | Train Loss: 1.7233
+Step 9890/10000 | Train Loss: 1.6470
+Step 9900/10000 | Train Loss: 1.6337 | Eval Train Loss: 1.6788
+Step 9910/10000 | Train Loss: 1.7228
+Step 9920/10000 | Train Loss: 1.7321
+Step 9930/10000 | Train Loss: 1.7344
+Step 9940/10000 | Train Loss: 1.6543
+Step 9950/10000 | Train Loss: 1.6488
+Step 9960/10000 | Train Loss: 1.6775
+Step 9970/10000 | Train Loss: 1.6424
+Step 9980/10000 | Train Loss: 1.7270
+Step 9990/10000 | Train Loss: 1.6353
+Step 10000/10000 | Train Loss: 1.6711 | Eval Train Loss: 1.6906
+(cs336) xiazeyu@d01:/mnt/data_x3/xiazeyu/stanford-cs336-main/assignment1-basics/c
+s336_basics$ tmux capture-pane -pS -10010 > log.txt
+

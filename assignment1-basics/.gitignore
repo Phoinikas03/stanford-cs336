@@ -165,3 +165,11 @@ cython_debug/
 
 .ruff_cache/
 *.zip
+
+# log info
+wandb/
+.vscode/
+
+# model checkpoints and other files
+*.pt
+*.bin
