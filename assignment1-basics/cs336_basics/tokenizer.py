@@ -2,7 +2,9 @@ from collections.abc import Iterable, Iterator
 from typing import Dict, List, Tuple, Optional
 import pickle
 import regex as re
-
+import json
+import time
+import os
 
 class Tokenizer:
     def __init__(
@@ -337,6 +339,7 @@ from multiprocessing import Pool, cpu_count
 def _encode_batch(args):
     """
     用于multiprocessing的辅助函数，批量处理多行
+    带超时保护和错误处理
     
     Parameters
     ----------
@@ -348,42 +351,122 @@ def _encode_batch(args):
     list[list[int]]
         每行编码后的token ids列表
     """
+    import signal
+    
+    def timeout_handler(signum, frame):
+        raise TimeoutError("Encoding timeout")
+    
     lines_list, vocab_filepath, merges_filepath, special_tokens = args
     # 每个进程只加载一次tokenizer
     tokenizer = Tokenizer.from_files(vocab_filepath, merges_filepath, special_tokens=special_tokens)
     
     # 批量处理所有lines
     results = []
-    for line in lines_list:
-        results.append(tokenizer.encode(line))
+    timeout_count = 0
+    error_count = 0
+    
+    for i, line in enumerate(lines_list):
+        try:
+            # 跳过异常长的行（可能有问题）
+            if len(line) > 100000:
+                results.append([])
+                continue
+            
+            # 设置10秒超时
+            signal.signal(signal.SIGALRM, timeout_handler)
+            signal.alarm(10)
+            
+            ids = tokenizer.encode(line)
+            results.append(ids)
+            
+            signal.alarm(0)  # 取消超时
+            
+        except TimeoutError:
+            # 超时时跳过该行
+            results.append([])
+            timeout_count += 1
+            signal.alarm(0)
+            if timeout_count == 1:  # 只打印第一次
+                print(f"Warning: Line timeout (length={len(line)}), skipping...")
+                
+        except Exception as e:
+            # 其他错误也跳过
+            results.append([])
+            error_count += 1
+            if error_count == 1:  # 只打印第一次
+                print(f"Warning: Encoding error: {e}")
+    
+    if timeout_count > 0 or error_count > 0:
+        print(f"Batch summary: {timeout_count} timeouts, {error_count} errors out of {len(lines_list)} lines")
+    
     return results
 
 if __name__ == '__main__':
-    vocab_filepath = "../artifacts/tinystories_vocab.pkl"
-    merges_filepath = "../artifacts/tinystories_merges.pkl"
+    # vocab_filepath = "../artifacts/tinystories_vocab.pkl"
+    # merges_filepath = "../artifacts/tinystories_merges.pkl"
+    vocab_filepath = "../artifacts/openwebtext_vocab.pkl"
+    merges_filepath = "../artifacts/openwebtext_merges.pkl"
     special_tokens = ["<|endoftext|>"]
     
     mytokenizer = Tokenizer.from_files(vocab_filepath, merges_filepath, special_tokens=special_tokens)
     print("tokenizer info:", f"vocab size: {len(mytokenizer.vocab)}, merges size: {len(mytokenizer.merges)}")
     
-    file_path = "../dataset/tinystories/TinyStoriesV2-GPT4-train.txt"
+    # file_path = "../dataset/tinystories/TinyStoriesV2-GPT4-train.txt"
+    file_path = "../dataset/openwebtext/owt_train.txt"
     buffer = []
     total_tokens = 0
-    buffer_size = 1000000
+    buffer_size = 2000000
     
     # 使用 uint16 可以节省一半空间（如果你 vocab size < 65535）
     # 如果 vocab > 65535，则必须用 np.uint32 或 np.int32
     dtype = np.uint16
     input_path = file_path
-    output_path = "../artifacts/tinystories_train.bin"
+    # output_path = "../artifacts/tinystories_train.bin"
+    output_path = "../artifacts/openwebtext_train.bin"
+    checkpoint_path = output_path + ".checkpoint.json"
     
     # 设置并行处理的参数
-    num_workers = 16  
-    lines_per_task = 50000  # 每个任务处理的行数，减少通信开销
+    num_workers = 32  
+    lines_per_task = 200000  # 每个任务处理的行数，减少通信开销
     task_queue_size = num_workers * 2  # 同时提交的任务数，保持worker忙碌
+    checkpoint_interval = 1000000  # 每处理100万行保存一次checkpoint
     
     print(f"Processing {input_path}...")
     print(f"Using {num_workers} workers, {lines_per_task} lines per task...")
+    
+    # ========== 检查并加载checkpoint ==========
+    start_line = 0
+    resume_mode = False
+    
+    if os.path.exists(checkpoint_path):
+        print(f"\n✓ 发现checkpoint文件: {checkpoint_path}")
+        try:
+            with open(checkpoint_path, 'r') as f:
+                checkpoint_data = json.load(f)
+            
+            start_line = checkpoint_data.get('lines_processed', 0)
+            total_tokens = checkpoint_data.get('total_tokens', 0)
+            
+            print(f"  已处理行数: {start_line:,}")
+            print(f"  已生成token数: {total_tokens:,}")
+            print(f"  上次保存时间: {checkpoint_data.get('timestamp', 'N/A')}")
+            
+            response = input("\n是否从checkpoint恢复? (yes/no): ").strip().lower()
+            if response == 'yes':
+                resume_mode = True
+                print(f"✓ 将从第 {start_line + 1} 行继续处理")
+            else:
+                print("✗ 从头开始处理")
+                start_line = 0
+                total_tokens = 0
+                resume_mode = False
+        except Exception as e:
+            print(f"⚠️  读取checkpoint失败: {e}")
+            print("将从头开始处理")
+            start_line = 0
+            resume_mode = False
+    else:
+        print(f"ℹ️  未找到checkpoint文件，从头开始处理")
     
     result = subprocess.run(
             ['wc', '-l', input_path],
@@ -391,19 +474,52 @@ if __name__ == '__main__':
             text=True
         )
     total_lines = int(result.stdout.split()[0])
+    
+    print(f"\n文件总行数: {total_lines:,}")
+    if resume_mode:
+        print(f"剩余行数: {total_lines - start_line:,}")
+    print("")
 
+    # 以追加模式打开输出文件（如果resume），否则覆盖
+    file_mode = 'ab' if resume_mode else 'wb'
+    
     with open(input_path, 'r', encoding='utf-8') as f_in, \
-         open(output_path, 'wb') as f_out, \
+         open(output_path, file_mode) as f_out, \
          Pool(processes=num_workers) as pool:
         
         # 创建进度条
-        pbar = tqdm(total=total_lines, desc="Tokenizing")
+        pbar = tqdm(total=total_lines, desc="Tokenizing", initial=start_line)
         
         # 收集一批lines，准备分配给workers
         lines_batch = []
         tasks = []
+        current_line = 0
+        lines_processed = start_line  # 已完成处理并写入的行数
+        last_checkpoint_line = start_line  # 上次保存checkpoint的行数
+        
+        def save_checkpoint_info():
+            """保存checkpoint信息"""
+            checkpoint_info = {
+                'lines_processed': lines_processed,
+                'total_tokens': total_tokens,
+                'total_lines': total_lines,
+                'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
+                'input_path': input_path,
+                'output_path': output_path,
+                'progress_percent': round(lines_processed / total_lines * 100, 2)
+            }
+            with open(checkpoint_path, 'w') as f:
+                json.dump(checkpoint_info, f, indent=2)
         
         for line in f_in:
+            current_line += 1
+            
+            # 跳过已处理的行
+            if current_line <= start_line:
+                if current_line % 1000000 == 0:
+                    print(f"跳过已处理行: {current_line:,} / {start_line:,}")
+                continue
+            
             lines_batch.append(line)
             
             # 当累积了足够的行，创建一个任务
@@ -428,11 +544,21 @@ if __name__ == '__main__':
                         if len(buffer) >= buffer_size:
                             arr = np.array(buffer, dtype=dtype)
                             f_out.write(arr.tobytes())
+                            f_out.flush()  # 强制写入磁盘
                             total_tokens += len(buffer)
                             buffer = []
                     
+                    # 更新已处理的行数
+                    lines_processed += task_line_count
+                    
                     pbar.update(task_line_count)
                     pbar.set_postfix({"tokens": f"{total_tokens:,}"})
+                    
+                    # 定期保存checkpoint
+                    if lines_processed - last_checkpoint_line >= checkpoint_interval:
+                        save_checkpoint_info()
+                        last_checkpoint_line = lines_processed
+                        print(f"\n💾 Checkpoint saved at line {lines_processed:,} ({lines_processed/total_lines*100:.1f}%)")
         
         # 提交最后不足一批的lines
         if lines_batch:
@@ -445,7 +571,19 @@ if __name__ == '__main__':
             batch_results = completed_task.get()
             for ids in batch_results:
                 buffer.extend(ids)
+                
+                # 如果缓冲区满了，写入磁盘
+                if len(buffer) >= buffer_size:
+                    arr = np.array(buffer, dtype=dtype)
+                    f_out.write(arr.tobytes())
+                    f_out.flush()
+                    total_tokens += len(buffer)
+                    buffer = []
+            
+            # 更新已处理的行数
+            lines_processed += task_line_count
             pbar.update(task_line_count)
+            pbar.set_postfix({"tokens": f"{total_tokens:,}"})
         
         pbar.close()
         
@@ -453,7 +591,24 @@ if __name__ == '__main__':
         if buffer:
             arr = np.array(buffer, dtype=dtype)
             f_out.write(arr.tobytes())
+            f_out.flush()
             total_tokens += len(buffer)
-            
-    print(f"Finished. Total tokens: {total_tokens}")
-    print(f"Saved to {output_path}")
+        
+        # 保存最终checkpoint
+        save_checkpoint_info()
+    
+    print(f"\n✓ 处理完成!")
+    print(f"  总行数: {total_lines:,}")
+    print(f"  已处理行数: {lines_processed:,}")
+    print(f"  总token数: {total_tokens:,}")
+    print(f"  输出文件: {output_path}")
+    print(f"  Checkpoint文件: {checkpoint_path}")
+    
+    # 如果全部处理完成，可以选择删除checkpoint文件
+    # if lines_processed >= total_lines:
+    #     response = input("\n处理已完成，是否删除checkpoint文件? (yes/no): ").strip().lower()
+    #     if response == 'yes':
+    #         os.remove(checkpoint_path)
+    #         print(f"✓ 已删除checkpoint文件: {checkpoint_path}")
+    #     else:
+    #         print(f"ℹ️  保留checkpoint文件: {checkpoint_path}")

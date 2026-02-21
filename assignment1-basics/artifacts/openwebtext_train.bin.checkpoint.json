@@ -1,0 +1,9 @@
+{
+  "lines_processed": 94568885,
+  "total_tokens": 2725619354,
+  "total_lines": 94568884,
+  "timestamp": "2026-02-16 22:55:57",
+  "input_path": "../dataset/openwebtext/owt_train.txt",
+  "output_path": "../artifacts/openwebtext_train.bin",
+  "progress_percent": 100.0
+}

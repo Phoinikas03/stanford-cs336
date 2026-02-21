@@ -56,13 +56,13 @@ def train_loop():
         print(f"当前进程 local_rank: {local_rank}")
     
     # ========== 训练配置 ==========
-    vocab_size = 10000
+    vocab_size = 32000
     context_length = 256
-    d_model = 512
-    num_layers = 6
-    num_heads = 16
-    d_ff = 1344
-    batch_size_per_gpu = 64  # 降低batch size以避免OOM
+    d_model = 1024
+    num_layers = 8
+    num_heads = 32
+    d_ff = 2688
+    batch_size_per_gpu = 16  # 降低batch size以避免OOM
     init_lr = 5e-4
     
     # ========== 初始化 Wandb (只在主进程) ==========
@@ -102,7 +102,8 @@ def train_loop():
     
     # ========== 使用 memmap 读取 tokenized 数据 ==========
     # 重要：dtype 必须与 tokenizer.py 中保存时使用的一致
-    train_data_path = "../artifacts/tinystories_train.bin"
+    # train_data_path = "../artifacts/tinystories_train.bin"
+    train_data_path = "../artifacts/openwebtext_train.bin"
     
     # np.memmap 的优势：
     # 1. 内存映射：不会一次性加载整个文件到内存
