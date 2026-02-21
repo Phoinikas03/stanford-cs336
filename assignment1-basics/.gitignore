@@ -173,3 +173,4 @@ wandb/
 # model checkpoints and other files
 *.pt
 *.bin
+vscode/
